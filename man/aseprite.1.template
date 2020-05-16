@@ -1,0 +1,36 @@
+aseprite(1) -- Animated sprite editor & pixel art tool
+======================================================
+
+## SYNOPSIS
+
+`aseprite` [options / files]  
+`aseprite` -b [options / files]
+
+## DESCRIPTION
+
+{{description}}
+
+## OPTIONS
+
+{{options}}
+
+## EXAMPLES
+
+{{examples}}
+
+## AUTHOR
+
+{{authors}}
+
+{{additonal_authors}}
+
+## COPYRIGHT
+
+{{copyright}}
+
+## SEE ALSO
+
+https://www.aseprite.org/  
+https://www.aseprite.org/docs/  
+https://www.aseprite.org/docs/cli/  
+https://github.com/aseprite/aseprite/  

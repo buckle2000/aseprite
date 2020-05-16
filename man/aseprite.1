@@ -1,0 +1,356 @@
+.\" generated with Ronn/v0.7.3
+.\" http://github.com/rtomayko/ronn/tree/0.7.3
+.
+.TH "ASEPRITE" "1" "May 2020" "" ""
+.
+.SH "NAME"
+\fBaseprite\fR \- Animated sprite editor & pixel art tool
+.
+.SH "SYNOPSIS"
+\fBaseprite\fR [options / files]
+.
+.br
+\fBaseprite\fR \-b [options / files]
+.
+.SH "DESCRIPTION"
+\fBAseprite\fR is a program to create animated sprites\. Its main features are:
+.
+.IP "\(bu" 4
+Sprites are composed of \fBlayers\fR & \fBframes\fR (as separated concepts)\.
+.
+.IP "\(bu" 4
+Supported color modes: \fBRGBA\fR, \fBIndexed\fR (palettes up to 256 colors), and Grayscale\.
+.
+.IP "\(bu" 4
+Load/save a sequence of \fBPNG\fR files and \fBGIF\fR animations (and FLC, FLI, JPG, BMP, PCX, TGA)\.
+.
+.IP "\(bu" 4
+Export/import animations to/from \fBSprite Sheets\fR\.
+.
+.IP "\(bu" 4
+\fBTiled\fR drawing mode, useful to draw \fBpatterns\fR and textures\.
+.
+.IP "\(bu" 4
+\fBUndo/Redo\fR for every operation\.
+.
+.IP "\(bu" 4
+Real\-time \fBanimation preview\fR\.
+.
+.IP "\(bu" 4
+\fBMultiple editors\fR support\.
+.
+.IP "\(bu" 4
+Pixel\-art specific tools like filled \fBContour\fR, \fBPolygon\fR, \fBShading\fR mode, etc\.
+.
+.IP "\(bu" 4
+\fBOnion skinning\fR
+.
+.IP "" 0
+.
+.SH "OPTIONS"
+.
+.TP
+\fB\-\-shell\fR
+Start an interactive console to execute scripts
+.
+.TP
+\fB\-b\fR, \fB\-\-batch\fR
+Do not start the UI
+.
+.TP
+\fB\-p\fR, \fB\-\-preview\fR
+Do not execute actions, just print what will be done
+.
+.TP
+\fB\-\-save\-as\fR \fIfilename\fR
+Save the last given sprite with other format
+.
+.TP
+\fB\-\-palette\fR \fIfilename\fR
+Change the palette of the last given sprite
+.
+.TP
+\fB\-\-scale\fR \fIfactor\fR
+Resize all previously opened sprites
+.
+.TP
+\fB\-\-dithering\-algorithm\fR \fIalgorithm\fR
+Dithering algorithm used in \-\-color\-mode to convert images from RGB to Indexed
+.
+.TP
+\fB\-\-dithering\-matrix\fR \fImatrix\fR
+Matrix used in ordered dithering algorithm
+.
+.TP
+\fB\-\-color\-mode\fR \fImode\fR
+Change color mode of all previously opened sprites
+.
+.br
+Options:
+.
+.br
+\~ rgb
+.
+.br
+\~ grayscale
+.
+.br
+\~ indexed
+.
+.TP
+\fB\-\-data\fR <filename\.json>
+File to store the sprite sheet metadata
+.
+.TP
+\fB\-\-format\fR \fIformat\fR
+Format to export the data file (json\-hash, json\-array)
+.
+.TP
+\fB\-\-sheet\fR <filename\.png>
+Image file to save the texture
+.
+.TP
+\fB\-\-sheet\-type\fR
+Algorithm to create the sprite sheet
+.
+.br
+Options:
+.
+.br
+\~ horizontal
+.
+.br
+\~ vertical
+.
+.br
+\~ rows
+.
+.br
+\~ columns
+.
+.br
+\~ packed
+.
+.TP
+\fB\-\-sheet\-width\fR \fIpixels\fR
+Sprite sheet width
+.
+.TP
+\fB\-\-sheet\-height\fR \fIpixels\fR
+Sprite sheet height
+.
+.TP
+\fB\-\-sheet\-columns\fR \fIcolumns\fR:
+
+.
+.TP
+\fB\-\-sheet\-rows\fR \fIrows\fR:
+
+.
+.TP
+\fB\-\-sheet\-pack\fR
+Use a packing algorithm to avoid waste of space in the texture
+.
+.TP
+\fB\-\-split\-layers\fR
+Import each layer of the next given sprite as a separated image in the sheet
+.
+.TP
+\fB\-\-split\-tags\fR
+Save each tag as a separated file
+.
+.TP
+\fB\-\-split\-slices\fR
+Save each slice as a separated file
+.
+.TP
+\fB\-\-layer\fR, \fB\-\-import\-layer\fR \fIname\fR
+Include just the given layer in the sheet
+.
+.TP
+\fB\-\-all\-layers\fR
+Make all layers visible
+.
+.br
+By default hidden layers will be ignored
+.
+.TP
+\fB\-\-ignore\-layer\fR \fIname\fR
+Exclude the given layer in the sheet or save as operation
+.
+.TP
+\fB\-\-tag\fR, \fB\-\-frame\-tag\fR \fIname\fR
+Include tagged frames in the sheet
+.
+.TP
+\fB\-\-frame\-range\fR from,to
+Only export frames in the [from,to] range
+.
+.TP
+\fB\-\-ignore\-empty\fR
+Do not export empty frames/cels
+.
+.TP
+\fB\-\-border\-padding\fR \fIvalue\fR Add padding on the texture borders:
+
+.
+.TP
+\fB\-\-shape\-padding\fR \fIvalue\fR
+Add padding between frames
+.
+.TP
+\fB\-\-inner\-padding\fR \fIvalue\fR
+Add padding inside each frame
+.
+.TP
+\fB\-\-trim\fR
+Trim all images before exporting
+.
+.TP
+\fB\-\-crop\fR x,y,width,height
+Crop all the images to the given rectangle
+.
+.TP
+\fB\-\-slice\fR \fIname\fR
+Crop the sprite to the given slice area
+.
+.TP
+\fB\-\-filename\-format\fR \fIfmt\fR
+Special format to generate filenames
+.
+.TP
+\fB\-\-script\fR \fIfilename\fR
+Execute a specific script
+.
+.TP
+\fB\-\-script\-param\fR name=value
+Parameter for a script executed from the
+.
+.br
+CLI that you can access with app\.params
+.
+.TP
+\fB\-\-list\-layers\fR
+List layers of the next given sprite or include layers in JSON data
+.
+.TP
+\fB\-\-list\-tags\fR
+List tags of the next given sprite sprite or include frame tags in JSON data
+.
+.TP
+\fB\-\-list\-slices\fR
+List slices of the next given sprite sprite or include slices in JSON data
+.
+.TP
+\fB\-\-oneframe\fR
+Load just the first frame
+.
+.TP
+\fB\-v\fR, \fB\-\-verbose\fR
+Explain what is being done
+.
+.TP
+\fB\-\-debug\fR
+Extreme verbose mode and copy log to desktop
+.
+.TP
+\fB\-?\fR, \fB\-\-help\fR
+Display this help and exits
+.
+.TP
+\fB\-\-version\fR
+Output version information and exit
+.
+.SH "EXAMPLES"
+TODO
+.
+.SH "AUTHOR"
+Igara Studio is developing Aseprite:
+.
+.IP "\(bu" 4
+David Capello: Lead developer, fixing issues, new features, and user support\.
+.
+.IP "\(bu" 4
+Gaspar Capello: Developer, fixing issues and new features\.
+.
+.IP "" 0
+.
+.P
+The default Aseprite theme was introduced in v0\.8, created by:
+.
+.IP "\(bu" 4
+Ilija Melentijevic
+.
+.IP "" 0
+.
+.P
+Aseprite includes color palettes created by:
+.
+.IP "\(bu" 4
+Richard "DawnBringer" Fhager, 16 colors, 32 colors\.
+.
+.IP "\(bu" 4
+Arne Niklas Jansson, 16 colors, 32 colors\.
+.
+.IP "\(bu" 4
+ENDESGA Studios, EDG16 and EDG32, and other palettes\.
+.
+.IP "\(bu" 4
+Hyohnoo Games, mail24 palette\.
+.
+.IP "\(bu" 4
+Davit Masia, matriax8c palette\.
+.
+.IP "\(bu" 4
+Javier Guerrero, nyx8 palette\.
+.
+.IP "\(bu" 4
+Adigun A\. Polack, AAP\-64, AAP\-Splendor128, SimpleJPC\-16, and AAP\-Micro12 palette\.
+.
+.IP "\(bu" 4
+PineTreePizza, Rosy\-42 palette\.
+.
+.IP "" 0
+.
+.P
+It tries to replicate some pixel\-art algorithms:
+.
+.IP "\(bu" 4
+RotSprite by Xenowhirl\.
+.
+.IP "\(bu" 4
+Pixel perfect drawing algorithm by Sébastien Bénard and Carduus\.
+.
+.IP "" 0
+.
+.P
+Thanks to third\-party open source projects, to contributors, and all the people who have contributed ideas, patches, bugs report, feature requests, donations, and help me to develop Aseprite\.
+.
+.SH "COPYRIGHT"
+This program is distributed under three different licenses:
+.
+.IP "1." 4
+Source code and official releases/binaries are distributed under our End\-User License Agreement for Aseprite (EULA) \fIEULA\.txt\fR\. Please check that there are modules/libraries in the source code \fIsrc/README\.md\fR that are distributed under the MIT license (e\.g\. laf \fIhttps://github\.com/aseprite/laf\fR, clip \fIhttps://github\.com/aseprite/clip\fR, undo \fIhttps://github\.com/aseprite/undo\fR, observable \fIhttps://github\.com/aseprite/observable\fR, ui \fIsrc/ui\fR, etc\.)\.
+.
+.IP "2." 4
+You can request a special educational license \fIhttp://www\.aseprite\.org/faq/#is\-there\-an\-educational\-license\fR in case you are a teacher in an educational institution and want to use Aseprite in your classroom (in\-situ)\.
+.
+.IP "3." 4
+Steam releases are distributed under the terms of the Steam Subscriber Agreement \fIhttp://store\.steampowered\.com/subscriber_agreement/\fR\.
+.
+.IP "" 0
+.
+.P
+You can get more information about Aseprite license in the FAQ \fIhttp://www\.aseprite\.org/faq/#licensing\-&\-commercial\fR\.
+.
+.SH "SEE ALSO"
+https://www\.aseprite\.org/
+.
+.br
+https://www\.aseprite\.org/docs/
+.
+.br
+https://www\.aseprite\.org/docs/cli/
+.
+.br
+https://github\.com/aseprite/aseprite/

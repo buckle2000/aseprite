@@ -1,0 +1,6 @@
+#!/bin/sh
+cd $(dirname "$0")
+deno run --allow-read=.. generate.ts < aseprite.1.template | ronn --roff > aseprite.1
+# TODO
+# ronn --roff < ../docs/ase-file-specs.md > aseprite.5
+# ronn --roff < ../docs/gpl-palette-extension.md > aseprite-gpl.5
