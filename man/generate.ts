@@ -1,4 +1,4 @@
-import {encode, decode} from "https://deno.land/std/encoding/utf8.ts"
+import {encode, decode} from "https://deno.land/std@0.51.0/encoding/utf8.ts"
 
 function excerpt(text: string, pattern: RegExp): string {
   const match = pattern.exec(text)
