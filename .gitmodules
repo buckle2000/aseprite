@@ -66,3 +66,6 @@
 [submodule "src/tga"]
 	path = src/tga
 	url = https://github.com/aseprite/tga.git
+[submodule "docs"]
+	path = docs
+	url = https://github.com/aseprite/docs.git
